@@ -1,0 +1,26 @@
+{
+  title: 'Anime Hub',
+  slug: { current: 'anime-hub', _type: 'slug' },
+  _createdAt: '2024-11-01T17:25:41Z',
+  author: {
+    _id: 'd8c46663-c7b6-4344-a14c-7bbe5c213767',
+    name: 'xiao',
+    username: 'xiaoo',
+    image: 'https://i.pinimg.com/736x/40/dc/b0/40dcb05edcff51960b931c482028343f.jpg',
+    bio: 'Lament~~'
+  },
+  members: [
+    {
+      _id: '12c40d20-3c78-43f2-8eef-014b849ca14f',
+      name: 'James',
+      image: 'https://i.pinimg.com/736x/10/69/78/106978ee91833c26c509563a0bc89b87.jpg',
+      bio: 'James a pro coder and football player'
+    }
+  ],
+  count: 2,
+  description: 'All update regarding anime',
+  _id: '8caf5e65-193a-4bb0-a1d4-618eafe3e333',
+  category: 'Anime',
+  image: 'https://cdn.pixabay.com/photo/2022/12/01/04/40/backpacker-7628303_1280.jpg',
+  pitch: null
+}

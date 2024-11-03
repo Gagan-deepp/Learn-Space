@@ -18,7 +18,6 @@ const page = async ({ params }) => {
 
     const id = (await params).id; //Post ID
     const session = await auth(); // Current User ID i.e. Visiting Page 
-    console.log('session --> ', session)
 
     const [post, user] = await Promise.all([
         await client.fetch(COMMUNITY_BY_ID_QUERY, { id }),
@@ -34,10 +33,10 @@ const page = async ({ params }) => {
 
     return (
         <>
-            <section className="section_container !w-[80%]" >
+            <section className="section_container !w-[80%] !py-4" >
 
                 {/* NAME AND BACKGROUND IMAGE OF COMMUNITY */}
-                <div className="flex flex-col-reverse sm:flex-row justify-between mt-10 w-full " >
+                <div className="flex flex-col sm:flex-row justify-between mt-10 w-full gap-8" >
                     <div className="flex flex-col gap-8" >
                         <div>
                             <h3 className="text-30-bold" > {post?.title} </h3>
@@ -53,15 +52,15 @@ const page = async ({ params }) => {
                                     <p className="text-16-medium !text-black-3"> @{post.author.username} </p>
                                 </div>
 
-                                <p className="category-tag"> {post.category} </p>
                             </Link>
+                            <p className="category-tag"> {post.category} </p>
 
                             {/* JOIN COMMUNITY BTN */}
                             {!isAuthor && session && <JoinCommunity id={id} user={user} isMember={isMember} />}
                         </div>
                     </div>
 
-                    <div className="w-[540px] h-[360px] overflow-hidden" >
+                    <div className=" overflow-hidden w-full min-h-[350px] sm:w-[540px] sm:h-[360px] " >
                         <img src={post.image} alt="background" className="w-full h-full rounded-xl object-cover" />
                     </div>
                 </div>

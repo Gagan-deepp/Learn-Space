@@ -3,17 +3,7 @@
 @tailwind utilities;
 
 ::-webkit-scrollbar {
-  width: 5px;
-}
-
-/* Track */
-::-webkit-scrollbar-track {
-  background: #404040;
-}
-
-/* Handle */
-::-webkit-scrollbar-thumb {
-  background: #000000;
+  display: none;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -61,11 +51,11 @@
   }
 
   .grey_container {
-    @apply w-full bg-primary-100 min-h-[530px] pattern flex justify-center items-center flex-col py-10 px-6;
+    @apply w-full bg-transparent min-h-[530px] pattern flex justify-center items-center flex-col py-10 px-6 z-10;
   }
 
   .tag {
-    @apply bg-secondary px-6 py-3 font-work-sans font-bold rounded-sm uppercase relative tag-tri;
+    @apply bg-grey-3 px-6 py-3 font-work-sans font-bold rounded-sm uppercase relative tag-tri;
   }
 
   .heading {
@@ -210,15 +200,16 @@
   .category-tag {
     @apply font-medium text-[16px] bg-primary-100 px-4 py-2 rounded-full;
   }
+
   .join-btn {
     @apply font-medium text-[16px] bg-black-3 text-grey-4 px-4 py-2 rounded-full;
   }
 
   .pattern {
     background-image: linear-gradient(to right,
+        rgba(30, 30, 30, 0.4) 5.5%,
         rgba(30, 30, 30, 0.1) 5.5%,
-        rgba(30, 30, 30, 0.1) 5.5%,
-        rgba(232, 232, 232, 0.2) 5.5%,
+        rgba(232, 232, 232, 0.4) 5.5%,
         transparent 5.5%);
 
     background-size: 5% 100%;

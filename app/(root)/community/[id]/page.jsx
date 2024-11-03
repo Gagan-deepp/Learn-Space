@@ -1,7 +1,7 @@
 import { auth } from "@/auth";
+import JoinCommunity from "@/components/JoinCommunity";
 import MemberCount from "@/components/MemberCount";
 import { Skeleton } from "@/components/ui/skeleton";
-import { joinCommunity } from "@/lib/actions";
 import { client } from "@/sanity/lib/client";
 import { AUTHOR_ID_QUERY, COMMUNITY_BY_ID_QUERY } from "@/sanity/lib/queries";
 import { Crown } from "lucide-react";
@@ -17,16 +17,17 @@ export const experimental_ppr = true;
 const page = async ({ params }) => {
 
     const id = (await params).id; //Post ID
-    const { id: userId } = await auth(); // Current User ID i.e. Visiting Page 
+    const session = await auth(); // Current User ID i.e. Visiting Page 
+    console.log('session --> ', session)
 
     const [post, user] = await Promise.all([
         await client.fetch(COMMUNITY_BY_ID_QUERY, { id }),
-        await client.fetch(AUTHOR_ID_QUERY, { id: userId })
+        session ? client.fetch(AUTHOR_ID_QUERY, { id: session.id }) : Promise.resolve(null)
     ])
     //Checking if current User is Author or not
-    const isAuthor = post?.author?.id === user?.id
+    const isAuthor = session != null ? post?.author?.id === user?.id : false;
     //Check if current User is member of community or not
-    const isMember = post?.members?.some(member => member?.id === user?.id)
+    const isMember = session != null ? post?.members?.some(member => member?.id === user?.id) : false
 
     if (!post) return notFound();
     const parsedContent = md.render(post?.pitch || '');
@@ -37,7 +38,6 @@ const page = async ({ params }) => {
 
                 {/* NAME AND BACKGROUND IMAGE OF COMMUNITY */}
                 <div className="flex flex-col-reverse sm:flex-row justify-between mt-10 w-full " >
-
                     <div className="flex flex-col gap-8" >
                         <div>
                             <h3 className="text-30-bold" > {post?.title} </h3>
@@ -57,17 +57,7 @@ const page = async ({ params }) => {
                             </Link>
 
                             {/* JOIN COMMUNITY BTN */}
-                            {!isAuthor && <div>
-                                <form action={async () => {
-                                    "use server"
-                                    const res = await joinCommunity(id, user);
-                                }}>
-                                    <button type="submit" disabled={isMember} >
-                                        <span className="max-sm:hidden join-btn" > {isMember ? "Joined!" : "Join Community"} </span>
-                                    </button>
-                                </form>
-                            </div>}
-
+                            {!isAuthor && session && <JoinCommunity id={id} user={user} isMember={isMember} />}
                         </div>
                     </div>
 

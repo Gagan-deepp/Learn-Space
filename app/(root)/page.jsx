@@ -2,6 +2,7 @@ import CommunityCard from "@/components/CommunityCard";
 import { sanityFetch, SanityLive } from "@/sanity/lib/live";
 import { COMMUNITY_QUERY, FAMOUS_COMMUNITY_QUERY } from "@/sanity/lib/queries";
 import SearchBar from "../../components/SearchBar";
+import Image from "next/image";
 
 export default async function Home({ searchParams }) {
 
@@ -15,9 +16,10 @@ export default async function Home({ searchParams }) {
 
   return (
     <>
-      <section className="grey_container rounded-3xl" >
+      <section className="grey_container rounded-3xl relative" >
+        <Image src="/bg1.jpg" alt="background" fill={true} className=" !z-[-1] rounded-3xl opacity-[0.6] " quality={100} />
         <h1 className="heading"> Grow Together, <br /> Learn Your Way </h1>
-        <p className="sub-heading !max-w-3xl" > Where Collaboration meets Personalized Learning </p>
+        <p className="!max-w-3xl tag" > Where Collaboration meets Personalized Learning </p>
         <SearchBar search={search} />
       </section>
 

@@ -16,7 +16,7 @@ export default async function Home({ searchParams }) {
 
   return (
     <>
-      <section className="grey_container rounded-3xl relative" >
+      <section className="grey_container rounded-3xl relative mt-8" >
         <Image src="/bg1.jpg" alt="background" fill={true} className=" !z-[-1] rounded-3xl opacity-[0.6] " quality={100} />
         <h1 className="heading"> Grow Together, <br /> Learn Your Way </h1>
         <p className="!max-w-3xl tag" > Where Collaboration meets Personalized Learning </p>

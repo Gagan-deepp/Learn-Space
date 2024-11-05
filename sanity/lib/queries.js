@@ -90,3 +90,16 @@ export const COMMUNITY_BY_AUTHOR_QUERY = defineQuery(`
         image
     }`
 )
+
+export const THREAD_QUERY = defineQuery(`
+    *[_type == "thread"] 
+    | order(_createdAt desc)[0...4] {
+        _id,
+        title,
+        slug,
+        _createdAt,
+        author -> { _id, name , image },
+        community -> { _id, title },
+        description,
+    }`
+)

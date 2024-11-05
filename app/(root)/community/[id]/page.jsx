@@ -1,4 +1,6 @@
 import { auth } from "@/auth";
+import AddThread from "@/components/AddThread";
+import CommunityTab from "@/components/CommunityTab";
 import JoinCommunity from "@/components/JoinCommunity";
 import MemberCount from "@/components/MemberCount";
 import { Skeleton } from "@/components/ui/skeleton";
@@ -65,14 +67,11 @@ const page = async ({ params }) => {
                     </div>
                 </div>
 
-                {/* MARKDOWN */}
-                <h3 className="text-30-bold" > Community Details </h3>
-                {parsedContent ? (
-                    <article
-                        className="prose max-w-full font-work-sans break-all mt-8"
-                        dangerouslySetInnerHTML={{ __html: parsedContent }}
-                    />
-                ) : (<p className="no-result" > No details provided </p>)}
+                {/* TABS */}
+                <div className="mt-8 max-w-5xl mx-auto" >
+                    <CommunityTab parsedContent={parsedContent} id={id} />
+                </div>
+
 
                 <hr className="divider" />
 
@@ -82,6 +81,8 @@ const page = async ({ params }) => {
                 <Suspense fallback={<Skeleton className="view_skeleton" />} >
                     <MemberCount id={id} />
                 </Suspense>
+
+                <AddThread />
             </section>
         </>
     )

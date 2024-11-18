@@ -272,7 +272,7 @@
   }
 
   .shad-dropdown-item {
-    @apply cursor-pointer !important;
+    @apply cursor-pointer hover:bg-white-1 !important;
   }
 
   .shad-dialog {

@@ -66,7 +66,7 @@ const page = async ({ params }) => {
                                         </p>
                                     </div>
                                 </div>
-                                {session.id === comment?.author._id && <ActionDropDown />}
+                                {session?.id === comment?.author._id && <ActionDropDown />}
                             </div>
 
                             {/* Content */}

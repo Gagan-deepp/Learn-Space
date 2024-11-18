@@ -20,6 +20,12 @@ const config = {
                     "100": "#cdcfce",
                     DEFAULT: "#d0d0ce",
                 },
+                light: {
+                    100: '#333F4E',
+                    200: '#A3B2C7',
+                    300: '#F2F5F9',
+                    400: '#F2F4F8',
+                },
                 secondary: "#FBE843",
                 "bg-white": "#FFFDF6",
                 "white-1": "#f5f5f5",
@@ -30,7 +36,7 @@ const config = {
                 "black-1": "#0a0a0a",
                 "black-2": "#171717",
                 "black-3": "#1F2127",
-                "black-hover": "rgba(0, 0, 0, 0.5)",
+                "black-hover": "rgba(0, 0, 0, 0.7)",
                 black: {
                     "100": "#333333",
                     "200": "#141413",

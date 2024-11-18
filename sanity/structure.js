@@ -4,5 +4,7 @@ export const structure = (S) =>
     .title('Content')
     .items([
       S.documentTypeListItem('author').title('Authors'),
-      S.documentTypeListItem('community').title('Community')
+      S.documentTypeListItem('community').title('Community'),
+      S.documentTypeListItem('thread').title('Thread'),
+      S.documentTypeListItem('comment').title('Comment')
     ])

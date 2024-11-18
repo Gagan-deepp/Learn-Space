@@ -19,6 +19,7 @@ export const experimental_ppr = true;
 const page = async ({ params }) => {
 
     const id = (await params).id; //Post ID
+    console.log("Page params : ", id)
     const session = await auth(); // Current User ID i.e. Visiting Page 
 
     const [post, user] = await Promise.all([
@@ -71,8 +72,6 @@ const page = async ({ params }) => {
                 <div className="mt-8 max-w-5xl mx-auto" >
                     <CommunityTab parsedContent={parsedContent} id={id} />
                 </div>
-
-
                 <hr className="divider" />
 
                 {/* //TODO :: THREAD PART */}

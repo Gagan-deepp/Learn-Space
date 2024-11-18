@@ -47,15 +47,24 @@
   }
 
   .text-20-medium {
-    @apply font-medium text-[20px] text-black;
+    @apply font-medium text-[20px] text-black-3;
   }
-
+  .text-18-medium {
+    @apply font-medium text-[18px] text-black-3;
+  }
   .text-16-medium {
-    @apply font-medium text-[16px] text-black;
+    @apply font-medium text-[16px] text-black-3;
+  }
+  .text-14-medium {
+    @apply font-medium text-[14px] text-black-3;
   }
 
   .grey_container {
     @apply w-full bg-transparent min-h-[530px] pattern flex justify-center items-center flex-col py-10 px-6 z-10;
+  }
+
+  .bg_container {
+    @apply w-full mt-5 bg-grey-3 min-h-[530px] pattern flex justify-center items-center rounded-xl flex-col py-10 px-6 z-10;
   }
 
   .tag {
@@ -147,6 +156,9 @@
     @apply font-bold text-[20px] line-clamp-1 my-3 text-black-100 break-all;
   }
 
+  .member-card {
+    @apply bg-grey-4 border-[5px] border-black py-4 px-3 rounded-[22px] shadow-200 hover:border-black-2 hover:shadow-black-2 transition-all duration-500 hover:bg-black-hover;
+  }
   /* startupcard */
   .startup-card {
     @apply bg-grey-4 border-[5px] border-black py-6 px-5 rounded-[22px] shadow-200 hover:border-black-2 hover:shadow-black-2 transition-all duration-500 hover:bg-black-hover;
@@ -174,7 +186,7 @@
 
   /* startupform */
   .startup-form {
-    @apply max-w-2xl mx-auto bg-white my-10 space-y-8 px-6;
+    @apply w-[60%] mx-auto bg-white my-10 space-y-8 px-6;
   }
 
   .startup-form_label {
@@ -182,7 +194,19 @@
   }
 
   .startup-form_input {
+    @apply border-[3px] border-black px-5 py-7 text-[18px] text-black font-semibold rounded-full mt-3 hover:bg-light-400 placeholder:text-black-300 !important;
+  }
+
+  .startup-form_select {
     @apply border-[3px] border-black px-5 py-7 text-[18px] text-black font-semibold rounded-full mt-3 placeholder:text-black-300 !important;
+  }
+
+  .select_content {
+    @apply bg-black-3 placeholder:text-black-300 !important;
+  }
+
+  .select_item {
+    @apply text-[16px] rounded-none px-2 py-4 font-semibold text-white-1 border-b border-grey-2 cursor-pointer !important;
   }
 
   .startup-form_textarea {
@@ -198,7 +222,78 @@
   }
 
   .startup-form_btn {
-    @apply bg-primary border-[4px] border-black rounded-full p-5 min-h-[70px] w-full font-bold text-[18px] !important;
+    @apply bg-black-3 cursor-pointer hover:bg-black-hover duration-200 transition-all border-[4px] border-black rounded-full p-5 min-h-[70px] w-full font-bold text-[18px] !important;
+  }
+
+  /* =====  SHADCN OVERRIDES */
+  .shad-no-focus {
+    @apply outline-none ring-offset-transparent focus:ring-transparent focus:ring-offset-0 focus-visible:outline-none focus-visible:ring-0 focus-visible:ring-transparent focus-visible:ring-offset-0 !important;
+  }
+
+  .shad-input {
+    @apply border-none shadow-none p-0 shad-no-focus placeholder:text-light-200 body-2 !important;
+  }
+
+  .shad-form-item {
+    @apply flex h-[78px] flex-col justify-center rounded-xl border border-light-300 px-4 shadow-drop-1;
+  }
+
+  .shad-form-label {
+    @apply text-light-100 pt-2 body-2 w-full !important;
+  }
+
+  .shad-form-message {
+    @apply text-red body-2 ml-4 !important;
+  }
+
+  .shad-alert-dialog {
+    @apply space-y-4 max-w-[95%] sm:w-fit rounded-xl md:rounded-[30px] px-4 md:px-8 py-10 bg-white outline-none !important;
+  }
+
+  .shad-submit-btn {
+    @apply bg-brand button hover:bg-brand-100 transition-all rounded-full !important;
+  }
+
+  .shad-otp {
+    @apply w-full flex gap-1 sm:gap-2 justify-between !important;
+  }
+
+  .shad-otp-slot {
+    @apply text-[40px] font-medium rounded-xl ring-brand shadow-drop-1 text-brand-100 justify-center flex border-2 border-light-300 size-12 md:size-16 gap-5 !important;
+  }
+
+  .shad-sheet {
+    @apply pt-0 !important;
+  }
+
+  .shad-sheet button,
+  .shad-dialog button {
+    @apply focus:ring-0 focus:ring-offset-0 focus-visible:border-none outline-none focus-visible:outline-none focus-visible:ring-transparent focus-visible:ring-offset-0 !important;
+  }
+
+  .shad-dropdown-item {
+    @apply cursor-pointer !important;
+  }
+
+  .shad-dialog {
+    @apply rounded-[26px] w-[90%] max-w-[400px] px-6 py-8 !important;
+  }
+
+  .shad-chart-title {
+    @apply text-white !important;
+  }
+
+  .shad-select-item {
+    @apply cursor-pointer !important;
+  }
+
+  /* Sidebar & MobileNavigation */
+  .nav-icon {
+    @apply w-6 filter invert opacity-25 !important;
+  }
+
+  .nav-icon-active {
+    @apply invert-0 opacity-100 !important;
   }
 
   /* view */
@@ -207,11 +302,11 @@
   }
 
   .add-container {
-    @apply flex justify-end items-center mt-5 fixed bottom-3 rounded-full right-1/2;
+    @apply flex justify-center items-center fixed bottom-3 rounded-full right-1/2;
   }
 
   .view-text {
-    @apply font-medium text-[16px] bg-black-2 text-white-1 px-4 py-2 rounded-lg capitalize;
+    @apply font-medium text-[16px] bg-black-2 text-white-1 px-4 py-2 rounded-lg capitalize hover:bg-black-hover duration-200 transition-all;
   }
 
   .category-tag {
@@ -224,6 +319,17 @@
 
   .tab {
     @apply flex overflow-hidden min-h-[50px] flex-1 items-center gap-3 bg-black-3 text-bg-white data-[state=active]:bg-black-hover data-[state=active]:text-grey-2 !important;
+  }
+
+  .caption {
+    @apply text-[12px] leading-[16px] font-normal;
+  }
+  .comment-form_input {
+    @apply border-[3px] border-black px-2 py-4 text-[18px] text-black font-semibold rounded-xl mt-3 hover:bg-light-400 placeholder:text-black-300 focus:border-none;
+  }
+
+  .startup-form_textarea {
+    @apply border-[3px] border-black text-[18px] text-black font-semibold rounded-[20px] mt-3 focus:border-none focus:outline-none hover:bg-light-400 placeholder:text-black-300 !important;
   }
 
   .pattern {

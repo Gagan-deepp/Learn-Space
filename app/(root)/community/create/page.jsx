@@ -8,7 +8,7 @@ const page = async () => {
     if (!session) redirect('/');
     return (
         <>
-            <section className="grey_container !min-h-[230px] " >
+            <section className="bg_container !min-h-[230px] " >
                 <h1 className="heading"> Create Your Community </h1>
             </section>
 

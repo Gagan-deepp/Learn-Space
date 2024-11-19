@@ -22,6 +22,11 @@
     @apply flex justify-between items-center;
   }
 
+  .flex-center {
+    @apply flex items-center justify-center;
+  }
+
+
   .text-30-extrabold {
     @apply text-[30px] font-extrabold text-black-3;
   }
@@ -49,12 +54,15 @@
   .text-20-medium {
     @apply font-medium text-[20px] text-black-3;
   }
+
   .text-18-medium {
     @apply font-medium text-[18px] text-black-3;
   }
+
   .text-16-medium {
     @apply font-medium text-[16px] text-black-3;
   }
+
   .text-14-medium {
     @apply font-medium text-[14px] text-black-3;
   }
@@ -159,6 +167,7 @@
   .member-card {
     @apply bg-grey-4 border-[5px] border-black py-4 px-3 rounded-[22px] shadow-200 hover:border-black-2 hover:shadow-black-2 transition-all duration-500 hover:bg-black-hover;
   }
+
   /* startupcard */
   .startup-card {
     @apply bg-grey-4 border-[5px] border-black py-6 px-5 rounded-[22px] shadow-200 hover:border-black-2 hover:shadow-black-2 transition-all duration-500 hover:bg-black-hover;
@@ -324,12 +333,40 @@
   .caption {
     @apply text-[12px] leading-[16px] font-normal;
   }
+
   .comment-form_input {
-    @apply border-[3px] border-black px-2 py-4 text-[18px] text-black font-semibold rounded-xl mt-3 hover:bg-light-400 placeholder:text-black-300 focus:border-none;
+    @apply border-[3px] border-black px-2 py-4 text-[18px] text-black font-semibold rounded-xl mt-3 bg-white-1 hover:bg-light-400 placeholder:text-black-300 focus:border-none;
   }
 
   .startup-form_textarea {
     @apply border-[3px] border-black text-[18px] text-black font-semibold rounded-[20px] mt-3 focus:border-none focus:outline-none hover:bg-light-400 placeholder:text-black-300 !important;
+  }
+
+  .uploader-button {
+    @apply primary-btn h-[52px] gap-2 px-10 shadow-drop-1 !important;
+  }
+
+  .primary-btn {
+    @apply bg-black-3 hover:bg-black-hover transition-all rounded-full button !important;
+  }
+
+  .uploader-preview-list {
+    @apply fixed bottom-10 right-10 z-50 flex size-full h-fit max-w-[300px] flex-col gap-3 rounded-[20px] bg-black-2 p-7 shadow-drop-3 !important;
+  }
+
+  .uploader-preview-item {
+    @apply flex items-center justify-between gap-3 rounded-xl p-3 shadow-drop-3 bg-light-400 !important;
+  }
+  .preview-item-name {
+    @apply text-14-medium mb-2 line-clamp-1 max-w-[300px] text-black-3 !important;
+  }
+
+  .thumbnail {
+    @apply flex-center size-[50px] min-w-[50px] overflow-hidden rounded-full bg-light-100;
+  }
+
+  .thumbnail-image {
+    @apply size-full object-cover object-center !important;
   }
 
   .pattern {

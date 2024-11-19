@@ -19,11 +19,10 @@ export const experimental_ppr = true;
 const page = async ({ params }) => {
 
     const id = (await params).id; //Post ID
-    console.log("Page params : ", id)
     const session = await auth(); // Current User ID i.e. Visiting Page 
 
     const [post, user] = await Promise.all([
-        await client.fetch(COMMUNITY_BY_ID_QUERY, { id }),
+        client.fetch(COMMUNITY_BY_ID_QUERY, { id }),
         session ? client.fetch(AUTHOR_ID_QUERY, { id: session.id }) : Promise.resolve(null)
     ])
     //Checking if current User is Author or not
@@ -36,7 +35,7 @@ const page = async ({ params }) => {
 
     return (
         <>
-            <section className="section_container !w-[80%] !py-4" >
+            <section className="section_container !w-[90%] !py-4" >
 
                 {/* NAME AND BACKGROUND IMAGE OF COMMUNITY */}
                 <div className="flex flex-col sm:flex-row justify-between mt-10 w-full gap-8" >

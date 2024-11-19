@@ -127,10 +127,16 @@ export const THREAD_BY_ID_QUERY = defineQuery(`
 
 export const COMMENT_OF_THREAD_QUERY = defineQuery(`
     *[_type == "comment" && parent._ref == $id ] 
-    | order(count desc) {
+    | order(_createdAt desc) {
         _id,
         content,
         _createdAt,
+        images[] {
+            asset->{
+                _id,
+                url
+            }
+        },
         author -> { _id, name , image,bio },
     }`
 )

@@ -6,5 +6,5 @@ export const structure = (S) =>
       S.documentTypeListItem('author').title('Authors'),
       S.documentTypeListItem('community').title('Community'),
       S.documentTypeListItem('thread').title('Thread'),
-      S.documentTypeListItem('comment').title('Comment')
+      S.documentTypeListItem('comment').title('Comment'),
     ])

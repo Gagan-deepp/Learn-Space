@@ -4,18 +4,16 @@ import CommentInput from '@/components/CommentInput';
 import { formatDate, toCapitalize } from '@/lib/utils';
 import { sanityFetch, SanityLive } from '@/sanity/lib/live';
 import { COMMENT_OF_THREAD_QUERY, THREAD_BY_ID_QUERY } from '@/sanity/lib/queries';
-import { Crown, MessageCircle } from 'lucide-react';
+import { Crown, ThumbsUp } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
-import React from 'react'
 
 const page = async ({ params }) => {
     const id = (await params).id;
     const session = await auth();
-
     const [{ data }, { data: comments }] = await Promise.all([
-        await sanityFetch({ query: THREAD_BY_ID_QUERY, params: { id } }),
-        await sanityFetch({ query: COMMENT_OF_THREAD_QUERY, params: { id } })
+        sanityFetch({ query: THREAD_BY_ID_QUERY, params: { id } }),
+        sanityFetch({ query: COMMENT_OF_THREAD_QUERY, params: { id } })
     ])
 
     return (
@@ -47,46 +45,54 @@ const page = async ({ params }) => {
                 <hr className="divider" />
 
                 {/* Comments  */}
-                {comments?.length > 0 ? (
-                    comments?.map((comment) => (
-                        <div className='member-card group flex flex-col' key={comment?._id}>
+                <div className='flex flex-col gap-4' >
+                    {comments?.length > 0 ? (
+                        comments?.map((comment) => (
+                            <div className='member-card group flex flex-col' key={comment?._id}>
 
-                            <div className='flex items-center justify-between gap-4 group-hover:text-white-1 flex-1' >
-                                <div className='flex items-center gap-2 group-hover:text-white-1 flex-1' >
-                                    <Link href={`/user/${comment?.author?._id}`}>
-                                        <Image src={comment?.author?.image} alt="profile" width={38} height={38} className="rounded-full" />
-                                    </Link>
-
-                                    <div className='flex flex-1 justify-between items-center' >
-                                        <Link href={`/user/${comment?.author?._id}`} >
-                                            <p className="text-[12px] font-bold group-hover:text-white-1"> @{comment?.author?.name} </p>
+                                <div className='flex items-center justify-between gap-4 group-hover:text-white-1 flex-1' >
+                                    <div className='flex items-center gap-2 group-hover:text-white-1 flex-1' >
+                                        <Link href={`/user/${comment?.author?._id}`}>
+                                            <Image src={comment?.author?.image} alt="profile" width={38} height={38} className="rounded-full" />
                                         </Link>
-                                        <p className="startup_card_date !text-[12px]" >
-                                            {formatDate(comment?._createdAt)}
-                                        </p>
+
+                                        <div className='flex flex-1 justify-between items-center' >
+                                            <Link href={`/user/${comment?.author?._id}`} >
+                                                <p className="text-[12px] font-bold group-hover:text-white-1"> @{comment?.author?.name} </p>
+                                            </Link>
+                                            <p className="startup_card_date !text-[12px]" >
+                                                {formatDate(comment?._createdAt)}
+                                            </p>
+                                        </div>
+                                    </div>
+                                    {session?.id === comment?.author._id && <ActionDropDown />}
+                                </div>
+
+                                {/* Content */}
+                                <div>
+                                    <p className="startup-card_desc group-hover:text-white-1" >
+                                        {comment?.content}
+                                    </p>
+
+                                    {comment?.images?.length > 0 && comment?.images.map((image) => (
+                                        <Link href={image.asset.url} key={image.asset._id} target='_blank' >
+                                            <img src={image.asset.url} alt="comment-image" className="startup-card_img" />
+                                        </Link>
+                                    ))}
+                                </div>
+
+                                {/* FOOTER */}
+                                <div className='flex-between mt-3' >
+                                    <div className="flex gap-1 items-center">
+                                        <ThumbsUp className="text-black-2 size-4 group-hover:text-light-400" />
+                                        <span className="caption text-black-2 group-hover:text-light-400" > 58 </span>
                                     </div>
                                 </div>
-                                {session?.id === comment?.author._id && <ActionDropDown />}
-                            </div>
 
-                            {/* Content */}
-                            <div>
-                                <p className="startup-card_desc group-hover:text-white-1" >
-                                    {comment?.content}
-                                </p>
                             </div>
-
-                            {/* FOOTER */}
-                            <div className='flex-between' >
-                                <div className="flex gap-1 items-center">
-                                    <MessageCircle className="text-black-2 size-4 group-hover:text-light-400" />
-                                    <span className="caption text-black-2 group-hover:text-light-400" > 58 </span>
-                                </div>
-                            </div>
-
-                        </div>
-                    ))
-                ) : <p> No Comments Yet !! </p>}
+                        ))
+                    ) : <p> No Comments Yet !! </p>}
+                </div>
             </section>
 
             {session && <CommentInput id={id} />}

@@ -1,5 +1,5 @@
 import { auth, signOut, signIn } from "@/auth"
-import { BadgePlus, LogOut } from "lucide-react"
+import { BadgePlus, LogOut, Users } from "lucide-react"
 import GitHub from "next-auth/providers/github"
 import Image from "next/image"
 import Link from "next/link"
@@ -18,7 +18,6 @@ const Navbar = async () => {
                 <div className="flex items-center gap-5 text-white-1">
                     {session && session?.user ? (
                         <>
-
                             <form action={async () => {
                                 "use server"
                                 await signOut({
@@ -36,6 +35,11 @@ const Navbar = async () => {
                                 <BadgePlus className="size-6 sm:hidden" />
                             </Link>
 
+                            <Link href="/community/all">
+                                <span className="max-sm:hidden" > Communities </span>
+                                <Users className="size-6 sm:hidden" />
+                            </Link>
+
                             <Link href={`/user/${session?.id}`} className="flex gap-3 items-center">
                                 <Avatar className="size-10" >
                                     <AvatarImage src={session?.user?.image || ""} alt={session?.user?.name || ""} />
@@ -44,14 +48,22 @@ const Navbar = async () => {
                             </Link>
                         </>
                     ) : (
-                        <form action={async () => {
-                            "use server"
-                            await signIn(GitHub)
-                        }} >
-                            <button type="submit">
-                                Login
-                            </button>
-                        </form>
+                        <>
+                            <form action={async () => {
+                                "use server"
+                                await signIn(GitHub)
+                            }} >
+                                <button type="submit">
+                                    Login
+                                </button>
+                            </form>
+
+                            <Link href="/community/all">
+                                <span className="max-sm:hidden" > Communities </span>
+                                <Users className="size-6 sm:hidden" />
+                            </Link>
+
+                        </>
                     )}
                 </div>
             </nav>

@@ -15,6 +15,23 @@ export const COMMUNITY_QUERY = defineQuery(`
         image
     }`
 )
+
+export const ALL_COMMUNITY_QUERY = defineQuery(`
+    *[_type == "community"] 
+    | order(_createdAt desc)[$start...$end] {
+        _id,
+        title,
+        slug,
+        _createdAt,
+        author -> { _id, name , image, bio },
+        members[] -> { _id, name , image, bio },
+        count,
+        description,
+        category,
+        image
+    }`
+)
+
 export const FAMOUS_COMMUNITY_QUERY = defineQuery(`
     *[_type == "community"] 
     | order(count desc)[0...4] {

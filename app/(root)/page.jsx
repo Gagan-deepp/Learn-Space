@@ -3,6 +3,7 @@ import { sanityFetch, SanityLive } from "@/sanity/lib/live";
 import { COMMUNITY_QUERY, FAMOUS_COMMUNITY_QUERY } from "@/sanity/lib/queries";
 import SearchBar from "../../components/SearchBar";
 import Image from "next/image";
+import Link from "next/link";
 
 export default async function Home({ searchParams }) {
 
@@ -29,11 +30,13 @@ export default async function Home({ searchParams }) {
         </p>
 
         <ul className="mt-8 card_grid" >
-          {coms?.length > 0 ? (
-            coms.map((com) => (
+          {coms?.length > 0 ? <>
+            {coms.map((com) => (
               <CommunityCard key={com._id} com={com} />
-            ))
-          ) : <p> No Communittes </p>}
+            ))}
+
+            <Link href="/community/all" className="caption hover:underline transition-all duration-200" > See all </Link>
+          </> : <p> No Communittes </p>}
         </ul>
       </section>
 
@@ -43,11 +46,12 @@ export default async function Home({ searchParams }) {
         </p>
 
         <ul className="mt-8 card_grid" >
-          {famous?.length > 0 ? (
-            famous.map((com) => (
+          {famous?.length > 0 ? <>
+            {famous.map((com) => (
               <CommunityCard key={com._id} com={com} />
-            ))
-          ) : <p> No Communittes </p>}
+            ))}
+            <Link href="/community/all" className="caption hover:underline transition-all duration-200" > See all </Link>
+          </> : <p> No Communittes </p>}
         </ul>
       </section>}
 

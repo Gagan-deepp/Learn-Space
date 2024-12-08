@@ -1,6 +1,5 @@
-import { auth, signOut, signIn } from "@/auth"
+import { auth, signIn, signOut } from "@/auth"
 import { BadgePlus, LogOut, Users } from "lucide-react"
-import GitHub from "next-auth/providers/github"
 import Image from "next/image"
 import Link from "next/link"
 import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar"
@@ -51,7 +50,7 @@ const Navbar = async () => {
                         <>
                             <form action={async () => {
                                 "use server"
-                                await signIn(GitHub)
+                                await signIn()
                             }} >
                                 <button type="submit">
                                     Login

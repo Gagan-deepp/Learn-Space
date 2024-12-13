@@ -13,7 +13,7 @@ export default async function Home({ searchParams }) {
   const [{ data: coms }, { data: famous }] = await Promise.all([
     sanityFetch({ query: COMMUNITY_QUERY, params }),
     sanityFetch({ query: FAMOUS_COMMUNITY_QUERY })
-  ])
+  ]);
 
   return (
     <>

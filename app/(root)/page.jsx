@@ -22,6 +22,7 @@ export default async function Home({ searchParams }) {
         <h1 className="heading"> Grow Together, <br /> Learn Your Way </h1>
         <p className="!max-w-3xl tag" > Where Collaboration meets Personalized Learning </p>
         <SearchBar search={search} />
+        Chat bot
       </section>
 
       <section className="section_container" >

@@ -10,7 +10,7 @@ const ThreadCard = async ({ thread }) => {
 
     const { _createdAt, author, _id, description, community, commentCount, title } = thread;
     const session = await auth();
-    const isAllow = author?._id === session.id
+    const isAllow = author?._id === session?.id
     return (
         <Link href={`/thread/${_id}`} className='member-card group flex flex-col' >
 
@@ -30,7 +30,7 @@ const ThreadCard = async ({ thread }) => {
                         </p>
                     </div>
                 </div>
-                <ActionDropDown isAllow={isAllow} />
+                <ActionDropDown isAllow={isAllow} id={_id} />
             </div>
 
             {/* HEADING & DESCRIPTION */}

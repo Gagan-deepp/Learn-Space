@@ -25,10 +25,10 @@ const page = async ({ params }) => {
 
                         <div className="flex items-start gap-5 flex-col" >
                             <Link href={`/user/${data.author?._id}`} className="flex gap-2 items-center mb-3">
-                                <Image src={data.author.image} alt="avatar" width={38} height={38} className="rounded-full drop-shadow-lg" />
+                                <Image src={data?.author?.image} alt="avatar" width={38} height={38} className="rounded-full drop-shadow-lg" />
 
                                 <div className='flex items-center gap-2' >
-                                    <p className="text-14-medium !text-black-3"> @{data.author.username} </p>
+                                    <p className="text-14-medium !text-black-3"> @{data?.author?.username} </p>
                                     <p className="items-center"><Crown className="fill-black-3 size-5" /> </p>
                                 </div>
 

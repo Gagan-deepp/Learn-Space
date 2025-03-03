@@ -21,9 +21,12 @@ const page = async ({ params }) => {
     const id = (await params).id; //Post ID
     const session = await auth(); // Current User ID i.e. Visiting Page 
 
+    console.log("ID ==> ", id)
+    console.log("Session ==> ", session)
+
     const [post, user] = await Promise.all([
         client.fetch(COMMUNITY_BY_ID_QUERY, { id }),
-        session ? client.fetch(AUTHOR_ID_QUERY, { id: session.id }) : Promise.resolve(null)
+        session ? client.fetch(AUTHOR_ID_QUERY, { id: session?.id }) : Promise.resolve(null)
     ])
     //Checking if current User is Author or not
     const isAuthor = session != null ? post?.author?.id === user?.id : false;

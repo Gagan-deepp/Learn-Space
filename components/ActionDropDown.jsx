@@ -5,11 +5,15 @@ import Image from 'next/image'
 import { actionsDropdownItems } from '@/lib/constants'
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuSeparator, DropdownMenuTrigger } from './ui/dropdown-menu'
 import { Button } from './ui/button'
+import { deleteThread } from '@/lib/actions'
+import { LoaderCircle } from 'lucide-react'
 
-const ActionDropDown = ({ isAllow }) => {
+const ActionDropDown = ({ isAllow, id }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [action, setAction] = useState(null);
+  const [isLoading, setIsLoading] = useState(false);
+
   const filteredActions = actionsDropdownItems.filter((item) => !(item.value === "delete" && !isAllow))
 
   const closeAllModals = () => {
@@ -18,6 +22,24 @@ const ActionDropDown = ({ isAllow }) => {
     setAction(null);
     // setName(file.name);
     //   setEmails([]);
+  };
+
+  const handleAction = async (e) => {
+    e.preventDefault(); // Prevent default action
+    e.stopPropagation();
+    if (!action) return;
+    setIsLoading(true);
+    let success = false;
+
+    const actions = {
+      delete: () =>
+        deleteThread(id),
+    };
+
+    success = await actions[action.value]();
+
+    setIsLoading(false);
+    if (success) closeAllModals();
   };
 
   const renderDialogContent = () => {
@@ -32,17 +54,9 @@ const ActionDropDown = ({ isAllow }) => {
             {label}
           </DialogTitle>
 
-          {/* {value === "details" && <FileDetails file={file} />} */}
-          {/* {value === "share" && (
-            <ShareInput
-              file={file}
-              onInputChange={setEmails}
-              onRemove={handleRemoveUser}
-            />
-          )} */}
           {value === "delete" && (
             <p className="delete-confirmation">
-              Are you sure you want to delete the thread
+              Are you sure you want to delete this thread
             </p>
           )}
         </DialogHeader>
@@ -51,8 +65,9 @@ const ActionDropDown = ({ isAllow }) => {
             <Button onClick={closeAllModals} className="modal-cancel-button">
               Cancel
             </Button>
-            <Button className="modal-submit-button">
+            <Button onClick={handleAction} className="modal-submit-button">
               <p className="capitalize">{value}</p>
+              { isLoading && ( <LoaderCircle className='animate-spin' /> ) }
             </Button>
           </DialogFooter>
         )}

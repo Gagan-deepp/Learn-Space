@@ -4,6 +4,7 @@ import { COMMUNITY_QUERY, FAMOUS_COMMUNITY_QUERY } from "@/sanity/lib/queries";
 import SearchBar from "../../components/SearchBar";
 import Image from "next/image";
 import Link from "next/link";
+import Chatbot from "@/components/Chatbot";
 
 export default async function Home({ searchParams }) {
 
@@ -22,7 +23,6 @@ export default async function Home({ searchParams }) {
         <h1 className="heading"> Grow Together, <br /> Learn Your Way </h1>
         <p className="!max-w-3xl tag" > Where Collaboration meets Personalized Learning </p>
         <SearchBar search={search} />
-        Chat bot
       </section>
 
       <section className="section_container" >
@@ -56,6 +56,7 @@ export default async function Home({ searchParams }) {
         </ul>
       </section>}
 
+      <Chatbot />
       <SanityLive />
     </>
   );

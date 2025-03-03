@@ -4,10 +4,13 @@ import Image from 'next/image';
 import Link from 'next/link';
 import React from 'react'
 import ActionDropDown from './ActionDropDown';
+import { auth } from '@/auth';
 
-const ThreadCard = ({ thread }) => {
+const ThreadCard = async ({ thread }) => {
 
     const { _createdAt, author, _id, description, community, commentCount, title } = thread;
+    const session = await auth();
+    const isAllow = author?._id === session.id
     return (
         <Link href={`/thread/${_id}`} className='member-card group flex flex-col' >
 
@@ -27,7 +30,7 @@ const ThreadCard = ({ thread }) => {
                         </p>
                     </div>
                 </div>
-                <ActionDropDown />
+                <ActionDropDown isAllow={isAllow} />
             </div>
 
             {/* HEADING & DESCRIPTION */}

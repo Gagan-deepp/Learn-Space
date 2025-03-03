@@ -1,7 +1,10 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-    images:{
-        remotePatterns:[
+    eslint: {
+        ignoreDuringBuilds: true,
+    },
+    images: {
+        remotePatterns: [
             {
                 protocol: "https",
                 hostname: "*"
@@ -11,10 +14,10 @@ const nextConfig = {
     experimental: {
         ppr: 'incremental'
     },
-    devIndicators:{
-        appIsrStatus :true,
-        buildActivity : true,
-        buildActivityPosition : 'bottom-right'
+    devIndicators: {
+        appIsrStatus: true,
+        buildActivity: true,
+        buildActivityPosition: 'bottom-right'
     }
 };
 

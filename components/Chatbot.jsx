@@ -68,7 +68,6 @@ const Chatbot = () => {
                                         <div key={index} className={`mb-4 ${message.role === "user" ? "text-right" : "text-left"}`} >
                                             <div className={`inline-block rounded-lg p-4 ${message.role === "user" ? 'bg-primary text-black-3 ' : 'bg-gray-500 text-white-1 '} `} >
                                                 <ReactMarkdown
-                                                    children={message.content}
                                                     remarkPlugins={[remarkGfm]}
                                                     components={{
                                                         code({ node, inLine, className, children, ...props }) {
@@ -94,7 +93,9 @@ const Chatbot = () => {
                                                         )
                                                     }}
 
-                                                />
+                                                >
+                                                    {message.content}
+                                                </ReactMarkdown>
                                             </div>
 
                                         </div>

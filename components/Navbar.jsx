@@ -1,5 +1,5 @@
 import { auth, signIn, signOut } from "@/auth"
-import { BadgePlus, LogOut, Users } from "lucide-react"
+import { BadgePlus, BriefcaseBusiness, LogOut, Users } from "lucide-react"
 import Image from "next/image"
 import Link from "next/link"
 import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar"
@@ -38,6 +38,10 @@ const Navbar = async () => {
                                 <span className="max-sm:hidden" > Communities </span>
                                 <Users className="size-6 sm:hidden" />
                             </Link>
+                            <Link href="/roadmap">
+                                <span className="max-sm:hidden" > Roadmap </span>
+                                <BriefcaseBusiness className="size-6 sm:hidden" />
+                            </Link>
 
                             <Link href={`/user/${session?.id}`} className="flex gap-3 items-center">
                                 <Avatar className="size-10" >
@@ -60,6 +64,10 @@ const Navbar = async () => {
                             <Link href="/community/all">
                                 <span className="max-sm:hidden" > Communities </span>
                                 <Users className="size-6 sm:hidden" />
+                            </Link>
+                            <Link href="/roadmap">
+                                <span className="max-sm:hidden" > Roadmap </span>
+                                <BriefcaseBusiness className="size-6 sm:hidden" />
                             </Link>
 
                         </>

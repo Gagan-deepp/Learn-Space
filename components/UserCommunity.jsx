@@ -3,9 +3,10 @@ import { COMMUNITY_BY_AUTHOR_QUERY } from '@/sanity/lib/queries'
 import React from 'react'
 import CommunityCard from './CommunityCard'
 
-const UserCommunity = async ({ id }) => {
+const UserCommunity = async ({ communities }) => {
 
-    const communities = await client.fetch(COMMUNITY_BY_AUTHOR_QUERY, { id })
+    
+    console.log("Communities ==> ", communities)
 
     return (
         <>

@@ -7,6 +7,7 @@ import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuSepara
 import { Button } from './ui/button'
 import { deleteThread } from '@/lib/actions'
 import { LoaderCircle } from 'lucide-react'
+import { toast } from 'sonner'
 
 const ActionDropDown = ({ isAllow, id }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -36,10 +37,10 @@ const ActionDropDown = ({ isAllow, id }) => {
         deleteThread(id),
     };
 
-    success = await actions[action.value]();
-
+    res = await actions[action.value]();
+    toast.success(res.message)
     setIsLoading(false);
-    if (success) closeAllModals();
+    if (res) closeAllModals();
   };
 
   const renderDialogContent = () => {
@@ -48,7 +49,7 @@ const ActionDropDown = ({ isAllow, id }) => {
     const { value, label } = action;
 
     return (
-      <DialogContent className="shad-dialog button">
+      <DialogContent className="shad-dialog button bg-white-1">
         <DialogHeader className="flex flex-col gap-3">
           <DialogTitle className="text-center text-light-100">
             {label}

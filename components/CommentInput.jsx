@@ -7,6 +7,7 @@ import { addComment } from "@/lib/actions"
 import Image from "next/image"
 import { Textarea } from "./ui/textarea"
 import FileUpload from "./FileUpload"
+import { toast } from "sonner"
 
 const CommentInput = ({ id }) => {
     const [isLoading, setIsLoading] = useState(false);
@@ -24,6 +25,7 @@ const CommentInput = ({ id }) => {
             setIsLoading(false);
             setValue("");
             setFiles([]);
+            toast.success("Comment Added !!")
         }
     };
 

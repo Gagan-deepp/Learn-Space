@@ -1,8 +1,11 @@
 import { auth } from '@/auth';
 import { CommunityCardSkeleton } from '@/components/CommunityCard';
+import ProfileAnalysis from '@/components/ProfileAnalysis';
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import UserCommunity from '@/components/UserCommunity';
 import { client } from '@/sanity/lib/client';
-import { AUTHOR_ID_QUERY } from '@/sanity/lib/queries';
+import { AUTHOR_ID_QUERY, COMMUNITY_BY_AUTHOR_QUERY } from '@/sanity/lib/queries';
+import { AtSign, Info } from 'lucide-react';
 import Image from 'next/image';
 import { notFound } from 'next/navigation';
 import { Suspense } from 'react';
@@ -14,8 +17,12 @@ const page = async ({ params }) => {
     const id = (await params).id;
     const session = await auth();
 
-    const user = await client.fetch(AUTHOR_ID_QUERY, { id });
+    const [user, communities] = await Promise.all([
+        client.fetch(AUTHOR_ID_QUERY, { id }),
+        client.fetch(COMMUNITY_BY_AUTHOR_QUERY, { id })
+    ])
     if (!user) return notFound();
+    console.log("USer ==> ", user)
 
     return (
         <>
@@ -39,11 +46,36 @@ const page = async ({ params }) => {
                     </p>
 
                     {/* User Community */}
-                    <ul className='card_grid-sm' >
-                        <Suspense fallback={<CommunityCardSkeleton />} >
-                            <UserCommunity id={id} />
-                        </Suspense>
-                    </ul>
+
+                    <Tabs defaultValue="communities">
+                        <TabsList className="tab" >
+                            <TabsTrigger value="communities" className="tab rounded-2xl" >
+                                <Info className='flex sm:hidden text-light-400 font-bold' />
+                                <h3 className="text-30-bold-light hidden sm:flex" > Communities </h3>
+                            </TabsTrigger>
+                            <TabsTrigger value="analysis" className="tab rounded-2xl" >
+                                <AtSign className='flex sm:hidden text-light-400 font-bold' />
+                                <h3 className="text-30-bold-light hidden sm:flex" > Profile Analysis </h3>
+                            </TabsTrigger>
+
+                        </TabsList>
+
+
+                        <TabsContent value="communities">
+                            <ul className='card_grid-sm mt-12' >
+                                <Suspense fallback={<CommunityCardSkeleton />} >
+                                    <UserCommunity communities={communities} />
+                                </Suspense>
+                            </ul>
+                        </TabsContent>
+
+                        <TabsContent value="analysis">
+                            <ProfileAnalysis user={user} communities={communities} />
+                        </TabsContent>
+
+                    </Tabs>
+
+
                 </div>
 
 

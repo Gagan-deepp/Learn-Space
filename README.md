@@ -1,36 +1,86 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+<div align="center">
+  <!-- Replace with your own banner image -->
+  <img src="https://user-images.githubusercontent.com/placeholder/learnspace-banner.png" alt="Learn Space Banner" width="100%" />
+</div>
 
-## Getting Started
+# Learn Space
 
-First, run the development server:
+**AI-Powered Educational Platform for Personalized Learning, Career Growth & Community Collaboration**  
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+[![License](https://img.shields.io/badge/license-MIT-blue.svg)](#)
+[![Next.js](https://img.shields.io/badge/built%20with-Next.js-green.svg)](#)
+[![Node.js](https://img.shields.io/badge/back--end-Node.js-orange.svg)](#)
+[![MongoDB](https://img.shields.io/badge/database-MongoDB-brightgreen.svg)](#)
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+---
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+## Table of Contents
+1. [Introduction](#introduction)  
+2. [Features](#features)  
+3. [Preview](#preview)  
+4. [Technology Stack](#technology-stack)  
+5. [Architecture](#architecture)  
+6. [Getting Started](#getting-started)  
+7. [Project Structure](#project-structure)  
+8. [Contributing](#contributing)  
+9. [License](#license)  
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+---
 
-## Learn More
+## Introduction
+**Learn Space** is an AI-driven educational platform designed to supercharge academic and professional growth. We aim to offer:
+- **Personalized Learning Roadmaps**  
+- **Profile Analysis & Career Recommendations**  
+- **Community-Driven Collaboration**  
+- **Threaded Learning Discussions**  
 
-To learn more about Next.js, take a look at the following resources:
+Built with **Next.js**, **Node.js**, and **MongoDB**, and hosted on **Vercel**, Learn Space delivers optimal performance and future-ready scalability.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+---
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Features
+1. **Personalized Learning Roadmaps**  
+   - AI-driven analysis of profiles, skills, and interests  
+   - Tailored learning paths and career-oriented steps  
 
-## Deploy on Vercel
+2. **Profile Analysis & Career Growth**  
+   - Detailed skill gap identification  
+   - Custom resource suggestions for professional readiness  
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+3. **Community-Driven Learning**  
+   - **Create** or **join communities** with shared interests  
+   - Peer-to-peer knowledge sharing and problem-solving  
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+4. **Threaded Learning Discussions**  
+   - Topic-specific forums for doubt resolution  
+   - Rich-media support for enhanced conceptual clarity  
+
+5. **Scalable Architecture**  
+   - Built on **Next.js** and the **MERN** stack  
+   - Deployed via **Vercel** for continuous integration and real-time updates  
+
+---
+
+## Preview
+<div align="center">
+  <!-- Replace the src with a screenshot or GIF link to give a real preview of your platform -->
+  <img src="https://user-images.githubusercontent.com/placeholder/learnspace-screenshot.png" alt="Learn Space Preview" width="80%" />
+</div>
+
+*Above is a quick glimpse of Learn Space's dashboard. Explore personalized lessons, participate in discussions, and track your progress all in one place.*
+
+---
+
+## Technology Stack
+| Stack        | Description                                                |
+|--------------|------------------------------------------------------------|
+| **Frontend** | [Next.js](https://nextjs.org/) (React Framework)           |
+| **Backend**  | [Node.js](https://nodejs.org/) with [Express.js](https://expressjs.com/) |
+| **Database** | [MongoDB Atlas](https://www.mongodb.com/cloud/atlas)       |
+| **Hosting**  | [Vercel](https://vercel.com/) & MongoDB Atlas             |
+| **AI**       | Profile-based career & learning path recommendations       |
+| **Auth**     | JWT-based secure login system                              |
+
+---
+
+## Architecture

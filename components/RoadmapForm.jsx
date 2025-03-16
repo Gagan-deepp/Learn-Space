@@ -16,7 +16,6 @@ const RoadmapForm = () => {
     const [experienceLevel, setExperienceLevel] = useState("")
     const [days, setDays] = useState(30)
     const [isRoadmap, setIsRoadMap] = useState(false)
-    const [isLoading, setIsLoading] = useState(false)
     const [error, setError] = useState(null)
     const [roadmapData, setRoadmapData] = useState(null)
 
@@ -24,7 +23,6 @@ const RoadmapForm = () => {
         try {
             // Reset previous state
             setError(null)
-            setIsLoading(true)
             setIsRoadMap(false)
 
             // Make a direct fetch request instead of using useCompletion
@@ -52,19 +50,16 @@ const RoadmapForm = () => {
         } catch (err) {
             console.error("Analysis error:", err)
             setError(err instanceof Error ? err.message : "An error occurred during analysis")
-        } finally {
-            setIsLoading(false)
         }
     }
 
     const [state, formAction, isPending] = useActionState(getRoadmap, { error: "", status: "INITIAL" });
-
     return (
         <div>
             <form action={formAction} className='startup-form'  >
                 <div>
                     <label htmlFor="skill" className='startup-form_label' > What roadmap are you seeking? </label>
-                    <Input id="skill" name="skill" required defaultValue={state.skill} className='startup-form_input' placeholder="e.g. Web Development, Data Structures & Algorithms" />
+                    <Input id="skill" name="skill" required className='startup-form_input' placeholder="e.g. Web Development, Data Structures & Algorithms" />
                     <p> Enter the skill or technology you want to learn. </p>
                     {errors.skill && <p className='startup-form_error'> {errors.skill} </p>}
                 </div>
@@ -106,7 +101,7 @@ const RoadmapForm = () => {
                 </Button>
             </form>
 
-            {isLoading && <RoadmapTimelineSkeleton />}
+            {isPending && <RoadmapTimelineSkeleton />}
 
             {error && <div className="p-4 bg-red-50 text-red-700 rounded-md">{error}</div>}
 

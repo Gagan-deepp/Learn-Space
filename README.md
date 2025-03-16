@@ -1,28 +1,24 @@
 # Learn Space 🚀
 
 <div align="center">
-  <img src="https://i.imgur.com/XYBxYss.png" alt="Learn Space Banner" width="600" />
+  <img src="https://learn-space-chi.vercel.app/_next/image?url=%2Fbg1.jpg&w=1920&q=100" alt="Learn Space Banner" width="600" />
   
-  <p>An AI-powered educational platform fostering personalized learning and community-driven collaboration</p>
-
-  [![Next.js](https://img.shields.io/badge/Next.js-black?style=for-the-badge&logo=next.js&logoColor=white)](https://nextjs.org/)
-  [![MongoDB](https://img.shields.io/badge/MongoDB-4EA94B?style=for-the-badge&logo=mongodb&logoColor=white)](https://www.mongodb.com/)
-  [![Node.js](https://img.shields.io/badge/Node.js-339933?style=for-the-badge&logo=nodedotjs&logoColor=white)](https://nodejs.org/)
-  [![Express.js](https://img.shields.io/badge/Express.js-000000?style=for-the-badge&logo=express&logoColor=white)](https://expressjs.com/)
-  [![Vercel](https://img.shields.io/badge/Vercel-000000?style=for-the-badge&logo=vercel&logoColor=white)](https://vercel.com/)
-</div>
-
-## 📋 Overview
-
 **Learn Space** is revolutionizing education through AI-powered personalization and community collaboration. Our platform analyzes user profiles to create tailored learning roadmaps, provides career growth recommendations, and fosters peer-to-peer knowledge exchange in a structured environment.
-
-<div align="center">
-  <img src="https://i.imgur.com/JGQIkYz.png" alt="Learn Space Dashboard Preview" width="700" />
 </div>
 
 ## ✨ Key Features
 
 <table>
+  <tr>
+  <td width="50%">
+      <h3>👥 Community-Driven Learning</h3>
+      <p>Create and join communities based on shared academic interests to collaborate and exchange knowledge.</p>
+    </td>
+    <td width="50%">
+      <h3>💬 Threaded Learning Discussions</h3>
+      <p>Structured forums for topic-specific conversations, doubt resolution, and enhanced conceptual clarity.</p>
+    </td>
+  </tr>
   <tr>
     <td width="50%">
       <h3>🧠 Personalized Learning Roadmaps</h3>
@@ -31,16 +27,6 @@
     <td width="50%">
       <h3>📈 Profile Analysis & Career Growth</h3>
       <p>Intelligent tracking of student progress with skill gap identification and customized resource suggestions.</p>
-    </td>
-  </tr>
-  <tr>
-    <td width="50%">
-      <h3>👥 Community-Driven Learning</h3>
-      <p>Create and join communities based on shared academic interests to collaborate and exchange knowledge.</p>
-    </td>
-    <td width="50%">
-      <h3>💬 Threaded Learning Discussions</h3>
-      <p>Structured forums for topic-specific conversations, doubt resolution, and enhanced conceptual clarity.</p>
     </td>
   </tr>
   <tr>
@@ -57,32 +43,60 @@
 
 ## 🛠️ Technology Stack
 
-<div align="center">
-  <img src="https://i.imgur.com/5XwYxQz.png" alt="Technology Stack Diagram" width="700" />
-</div>
-
 ### Frontend
-- **Next.js** - React framework for server-side rendering and static site generation
-- **Tailwind CSS** - Utility-first CSS framework for rapid UI development
-- **React Query** - Data fetching and state management
+![Next.js](https://img.shields.io/badge/Next.js-000000?style=for-the-badge&logo=nextdotjs&logoColor=white)
+![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?style=for-the-badge&logo=typescript&logoColor=white)
 
 ### Backend
-- **Node.js** - JavaScript runtime environment
-- **Express.js** - Web application framework
-- **MongoDB Atlas** - Cloud database service
+![Node.js](https://img.shields.io/badge/Node.js-339933?style=for-the-badge&logo=nodedotjs&logoColor=white)
+![Express.js](https://img.shields.io/badge/Express.js-000000?style=for-the-badge&logo=express&logoColor=white)
 
-### AI & Integration
-- **Machine Learning** - For profile analysis and recommendations
-- **JWT Authentication** - Secure user authentication
-- **RESTful API** - For seamless frontend-backend communication
+### Database
+![MongoDB](https://img.shields.io/badge/MongoDB-47A248?style=for-the-badge&logo=mongodb&logoColor=white)
+![Sanity CMS](https://img.shields.io/badge/Sanity_CMS-F03E2F?style=for-the-badge&logo=sanity&logoColor=white)
+
+### AI Integration
+![Gemini AI](https://img.shields.io/badge/Google%20Gemini-4285F4?style=for-the-badge&logo=google&logoColor=white)
+
+### Deployment
+![Vercel](https://img.shields.io/badge/Vercel-000000?style=for-the-badge&logo=vercel&logoColor=white)
 
 ## 🚀 Getting Started
-
-### Prerequisites
 
 ```bash
 # Make sure you have Node.js installed (v16 or higher)
 node --version
+# Clone the repository
+git clone https://github.com/yourusername/learn-space.git
 
-# And npm
-npm --version
+# Navigate to the project directory
+cd learn-space
+
+# Install dependencies
+npm install
+
+# Run the development server
+npm run dev
+```
+
+## 📊 Project Impact
+
+Learn Space empowers students with:
+
+- **AI-driven learning strategies** tailored to individual needs
+- **Meaningful peer interactions** in structured environments
+- **Career insights** based on skill analysis and industry trends
+- **Collaborative learning spaces** for knowledge exchange
+
+
+Our platform enhances student engagement, knowledge-sharing, and professional readiness through technology-enabled personalization.
+
+## 👥 Contributing
+
+We welcome contributions to Learn Space! Please follow these steps:
+
+1. Fork the repository
+2. Create a feature branch (`git checkout -b feature/amazing-feature`)
+3. Commit your changes (`git commit -m 'Add some amazing feature'`)
+4. Push to the branch (`git push origin feature/amazing-feature`)
+5. Open a Pull Request

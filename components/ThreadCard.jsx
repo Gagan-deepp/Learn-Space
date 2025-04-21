@@ -9,6 +9,7 @@ import { auth } from '@/auth';
 const ThreadCard = async ({ thread }) => {
 
     const { _createdAt, author, _id, description, community, commentCount, title } = thread;
+    console.log("Thread ==> ", thread)
     const session = await auth();
     const isAllow = author?._id === session?.id
     return (

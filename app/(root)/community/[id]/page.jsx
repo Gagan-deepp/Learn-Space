@@ -26,6 +26,7 @@ const page = async ({ params }) => {
         client.fetch(COMMUNITY_BY_ID_QUERY, { id }),
         session ? client.fetch(AUTHOR_ID_QUERY, { id: session?.id }) : Promise.resolve(null)
     ])
+
     //Checking if current User is Author or not
     const isAuthor = session != null ? post?.author?.id === user?.id : false;
     //Check if current User is member of community or not
@@ -69,7 +70,7 @@ const page = async ({ params }) => {
                 </div>
 
                 {/* TABS */}
-                <div className="mt-8 max-w-5xl mx-auto" >
+                <div className="mt-20 max-w-5xl mx-auto" >
                     <CommunityTab parsedContent={parsedContent} id={id} />
                 </div>
                 <hr className="divider" />

@@ -6,8 +6,9 @@ import { actionsDropdownItems } from '@/lib/constants'
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuSeparator, DropdownMenuTrigger } from './ui/dropdown-menu'
 import { Button } from './ui/button'
 import { deleteThread } from '@/lib/actions'
-import { LoaderCircle } from 'lucide-react'
+import { Check, Copy, LoaderCircle } from 'lucide-react'
 import { toast } from 'sonner'
+import { Input } from './ui/input'
 
 const ActionDropDown = ({ isAllow, id }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -60,6 +61,18 @@ const ActionDropDown = ({ isAllow, id }) => {
               Are you sure you want to delete this thread
             </p>
           )}
+          {value === "share" && (
+            <div className="flex items-center space-x-2 mt-4">
+              <Input readOnly value={`https://learn-space-chi.vercel.app/thread/${id}`} className="flex-1" />
+              <Button size="sm" variant="outline" onClick={async () => {
+                await navigator.clipboard.writeText(`https://learn-space-chi.vercel.app/thread/${id}`)
+                toast.success("Link Copied")
+                closeAllModals()
+              }} className="px-3">
+                <Copy className="size-4" />
+              </Button>
+            </div>
+          )}
         </DialogHeader>
         {["info", "delete", "share"].includes(value) && (
           <DialogFooter className="flex flex-col gap-3 md:flex-row">
@@ -68,7 +81,7 @@ const ActionDropDown = ({ isAllow, id }) => {
             </Button>
             <Button onClick={handleAction} className="modal-submit-button">
               <p className="capitalize">{value}</p>
-              { isLoading && ( <LoaderCircle className='animate-spin' /> ) }
+              {isLoading && (<LoaderCircle className='animate-spin' />)}
             </Button>
           </DialogFooter>
         )}
@@ -108,7 +121,7 @@ const ActionDropDown = ({ isAllow, id }) => {
               }}
             >
               <div className="flex items-center gap-2 z-[500]">
-                <Image src={actionItem.icon} alt={actionItem.label} width={30} height={30} />
+                <Image src={actionItem.icon} alt={actionItem.label} quality={50} width={30} height={30} />
                 {actionItem.label}
               </div>
             </DropdownMenuItem>

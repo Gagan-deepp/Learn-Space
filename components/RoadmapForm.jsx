@@ -56,7 +56,7 @@ const RoadmapForm = () => {
     const [state, formAction, isPending] = useActionState(getRoadmap, { error: "", status: "INITIAL" });
     return (
         <div>
-            <form action={formAction} className='startup-form'  >
+            <form action={formAction} className=' w-[90%] sm:w-[60%] mx-auto bg-white my-10 space-y-8 px-6'  >
                 <div>
                     <label htmlFor="skill" className='startup-form_label' > What roadmap are you seeking? </label>
                     <Input id="skill" name="skill" required className='startup-form_input' placeholder="e.g. Web Development, Data Structures & Algorithms" />
@@ -80,7 +80,7 @@ const RoadmapForm = () => {
                 </div>
 
                 <div>
-                    <label htmlFor="category" className='startup-form_label' > Category </label>
+                    <label htmlFor="category" className='startup-form_label' > Duration </label>
                     <div className='flex gap-2 items-center' >
                         <Input type="number" min={1} max={365} value={days || ""} onChange={(e) => { setDays(Number(e.target.value)) }} className="startup-form_input" placeholder="No of days.." />
                         <Slider min={1} max={365} step={1} value={[days]} onValueChange={(value) => setDays(value[0])} />

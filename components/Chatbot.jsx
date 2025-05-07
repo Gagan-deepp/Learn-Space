@@ -19,6 +19,8 @@ const Chatbot = () => {
         api: "/api/gemini"
     })
 
+    console.log("Error in api ==> ", error)
+
     const toggleChat = () => {
         setIsChatOpen(!isChatOpen)
     }
@@ -66,7 +68,7 @@ const Chatbot = () => {
 
                                     {messages?.map((message, index) => (
                                         <div key={index} className={`mb-4 ${message.role === "user" ? "text-right" : "text-left"}`} >
-                                            <div className={`inline-block rounded-lg p-4 ${message.role === "user" ? 'bg-primary text-black-3 ' : 'bg-gray-500 text-white-1 '} `} >
+                                            <div className={`inline-block rounded-lg p-4 ${message.role === "user" ? 'bg-gray-300 text-black-3 ' : 'bg-black-200 text-white-1 '} `} >
                                                 <ReactMarkdown
                                                     remarkPlugins={[remarkGfm]}
                                                     components={{

@@ -1,6 +1,5 @@
 "use client"
 
-import { useToast } from '@/hooks/use-toast'
 import { createThread } from '@/lib/actions'
 import { threadSchema } from '@/lib/validation'
 import { Send } from 'lucide-react'
@@ -11,12 +10,12 @@ import { Button } from './ui/button'
 import { Input } from './ui/input'
 import { Textarea } from './ui/textarea'
 import CommunitySelect from './CommunitySelect'
+import { toast } from 'sonner'
 
 const ThreadForm = ({ communities }) => {
 
     const [errors, setErrors] = useState({})
     const [community, setCommunity] = useState("")
-    const { toast } = useToast();
     const router = useRouter();
 
     const handleFormSubmit = async (prevState, formData) => {
@@ -29,33 +28,23 @@ const ThreadForm = ({ communities }) => {
             const res = await createThread(prevState, formData, community)
 
             if (res.status === 'SUCCESS') {
-                toast({
-                    title: 'Success',
-                    description: 'Thread Created Successfully',
-                })
-                router.push(`/`)
+                toast.success("Thread created successfull")
+                router.push(`/community/${community}`)
             }
         } catch (error) {
 
             if (error instanceof z.ZodError) {
                 const fieldErrors = error.flatten().fieldErrors;
                 setErrors(fieldErrors);
+                toast.error("Please check your input and try again..")
 
-                toast({
-                    title: 'Error',
-                    description: 'Please check your input and try again..',
-                    variant: "destructive",
-                })
 
                 return { ...prevState, error: "Validation Failed", status: "Error" }
             }
 
             console.log(error)
-            toast({
-                title: 'Error',
-                description: 'An unexpected Error Occured',
-                variant: "destructive",
-            })
+
+            toast.error("An unexpected Error Occured")
             return {
                 ...prevState,
                 error: "An unexpected Error Occured",

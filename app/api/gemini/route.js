@@ -6,7 +6,7 @@ const google = createGoogleGenerativeAI({
     apiKey: process.env.GOOGLE_API_KEY || ""
 })
 
-export const runtime = "edge"
+export const runtime = "nodejs"
 
 const generateId = () => Math.random().toString(36).slice(2, 15)
 
@@ -24,11 +24,20 @@ const buildGoogleGenAiPrompt = (messages) => [
 ]
 
 export async function POST(request) {
-    const { messages } = await request.json()
-    const stream = await streamText({
-        model: google("gemini-1.5-pro-latest"),
-        messages: buildGoogleGenAiPrompt(messages),
-        temperature: 0.7
-    })
-    return stream?.toDataStreamResponse();
+
+    try {
+        const { messages } = await request.json()
+
+        console.log("messages ==> ", messages)
+        const stream = await streamText({
+            model: google("gemini-1.5-pro"),
+            messages: buildGoogleGenAiPrompt(messages),
+            temperature: 0.7,
+            maxTokens: 300
+        })
+        return stream?.toDataStreamResponse();
+    } catch (error) {
+        console.error("Error in api call ==> ", error)
+    }
+
 }

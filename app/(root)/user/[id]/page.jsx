@@ -53,10 +53,10 @@ const page = async ({ params }) => {
                                 <Info className='flex sm:hidden text-light-400 font-bold' />
                                 <h3 className="text-30-bold-light hidden sm:flex" > Communities </h3>
                             </TabsTrigger>
-                            <TabsTrigger value="analysis" className="tab rounded-2xl" >
+                            {session?.id === id && <TabsTrigger value="analysis" className="tab rounded-2xl" >
                                 <AtSign className='flex sm:hidden text-light-400 font-bold' />
                                 <h3 className="text-30-bold-light hidden sm:flex" > Profile Analysis </h3>
-                            </TabsTrigger>
+                            </TabsTrigger>}
 
                         </TabsList>
 

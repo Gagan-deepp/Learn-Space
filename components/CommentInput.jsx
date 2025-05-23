@@ -2,7 +2,7 @@
 
 import { Button } from "./ui/button"
 import { useState } from "react"
-import { SendHorizonal } from "lucide-react"
+import { SendHorizonal, LoaderCircle } from "lucide-react"
 import { addComment } from "@/lib/actions"
 import Image from "next/image"
 import { Textarea } from "./ui/textarea"
@@ -39,13 +39,7 @@ const CommentInput = ({ id }) => {
 
             <Button className="bg-transparent" onClick={handleAction} >
                 {isLoading ? (
-                    <Image
-                        src="=/icon/loader.svg"
-                        alt="loader"
-                        width={24}
-                        height={24}
-                        className="animate-spin"
-                    />
+                    <LoaderCircle className="size-4 animate-spin" />
                 ) : (
                     <SendHorizonal />
                 )}

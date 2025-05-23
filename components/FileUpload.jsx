@@ -5,7 +5,7 @@ import { Button } from './ui/button'
 import Image from 'next/image'
 import { convertFileToUrl, getFileType } from '@/lib/utils'
 import Thumbnail from './Thumbnail'
-import { X } from 'lucide-react'
+import { Send, Upload, X } from 'lucide-react'
 
 const FileUpload = ({ files, setFiles, ownerId, accountId }) => {
 
@@ -24,7 +24,7 @@ const FileUpload = ({ files, setFiles, ownerId, accountId }) => {
         <div {...getRootProps()} className='cursor-pointer' >
             <input {...getInputProps()} />
             <Button type="button" className="" >
-                <Image src="/icon/upload.svg" alt='upload' width={24} height={24} />
+                <Upload className="size-4" />
             </Button>
 
             {files.length > 0 && <ul className='uploader-preview-list' >

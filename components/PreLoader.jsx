@@ -15,29 +15,33 @@ export default function PreLoader({ setIsLoading }) {
   }, [])
 
   useEffect(() => {
-    // Word cycling animation
+    const totalDuration = 3000;
+    const intervalTime = 50;
+    const totalTicks = totalDuration / intervalTime; 
+    const increment = 100 / totalTicks; // ~1.67 per tick
+
     const wordInterval = setInterval(() => {
       setWordIndex((prev) => (prev + 1) % loadingWords.length)
-    }, 650)
+    }, 600)
 
-    // Progress simulation
     const progressInterval = setInterval(() => {
       setProgress((prev) => {
         if (prev >= 100) {
           clearInterval(progressInterval)
           clearInterval(wordInterval)
-          setTimeout(() => setIsLoading(false), 1000)
+          setTimeout(() => setIsLoading(false), 1000) // 1 sec for exit animation
           return 100
         }
-        return prev + Math.random() * 15 + 5
+        return prev + increment
       })
-    }, 200)
+    }, intervalTime)
 
     return () => {
       clearInterval(progressInterval)
       clearInterval(wordInterval)
     }
   }, [])
+
 
   const slideUp = {
     initial: { top: 0 },

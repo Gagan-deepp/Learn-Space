@@ -20,8 +20,8 @@ const PreComponent = ({ coms, famous, search }) => {
             y: 0,
             opacity: 1,
             transition: {
-                duration: 1,
-                delay: 3.75,
+                duration: 1.5,
+                delay: 4,
                 ease: [0.85, 0, 0.15, 1],
             }
         }
@@ -34,7 +34,7 @@ const PreComponent = ({ coms, famous, search }) => {
             scale: 1,
             transition: {
                 duration: 1,
-                delay: 4.5,
+                delay: 4.75,
                 ease: [0.85, 0, 0.15, 1],
             }
         }
@@ -49,7 +49,7 @@ const PreComponent = ({ coms, famous, search }) => {
             opacity: 1,
             transition: {
                 duration: 1.5,
-                delay: 4,
+                delay: 4.2,
                 ease: [0.85, 0, 0.15, 1],
             }
         }
@@ -65,7 +65,10 @@ const PreComponent = ({ coms, famous, search }) => {
 
             <div>
                 <section className="grey_container rounded-3xl relative mt-8" >
-                    <Image src="/bg1.jpg" alt="background" fill={true} className=" !z-[-1] rounded-3xl opacity-[0.6] object-cover" quality={100} />
+
+                    <motion.div variants={opacityVar} initial="initial" animate="animate" className="overflow-hidden relative" >
+                        <Image src="/bg1.jpg" alt="background" fill={true} className=" !z-[-1] rounded-3xl opacity-[0.6] object-cover" quality={100} />
+                    </motion.div>
 
                     <motion.div variants={opacityVar} initial="initial" animate="animate" className="overflow-hidden relative heading" >
                         <motion.h1 variants={variants} initial="initial" animate="animate"> Grow Together, <br /> Learn Your Way </motion.h1>

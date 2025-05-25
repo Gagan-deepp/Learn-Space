@@ -21,7 +21,7 @@ const PreComponent = ({ coms, famous, search }) => {
             opacity: 1,
             transition: {
                 duration: 1.5,
-                delay: 4,
+                delay: 5,
                 ease: [0.85, 0, 0.15, 1],
             }
         }
@@ -34,7 +34,7 @@ const PreComponent = ({ coms, famous, search }) => {
             scale: 1,
             transition: {
                 duration: 1,
-                delay: 4.75,
+                delay: 5.5,
                 ease: [0.85, 0, 0.15, 1],
             }
         }
@@ -49,7 +49,7 @@ const PreComponent = ({ coms, famous, search }) => {
             opacity: 1,
             transition: {
                 duration: 1.5,
-                delay: 4.2,
+                delay: 5.7,
                 ease: [0.85, 0, 0.15, 1],
             }
         }
@@ -66,7 +66,7 @@ const PreComponent = ({ coms, famous, search }) => {
             <div>
                 <section className="grey_container rounded-3xl relative mt-8" >
 
-                    <motion.div variants={opacityVar} initial="initial" animate="animate" className="overflow-hidden relative" >
+                    <motion.div variants={scaleVar} initial="initial" animate="animate" className="overflow-hidden relative" >
                         <Image src="/bg1.jpg" alt="background" fill={true} className=" !z-[-1] rounded-3xl opacity-[0.6] object-cover" quality={100} />
                     </motion.div>
 

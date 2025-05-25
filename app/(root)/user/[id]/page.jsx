@@ -1,11 +1,12 @@
 import { auth } from '@/auth';
 import { CommunityCardSkeleton } from '@/components/CommunityCard';
+import { HolidayCalendar } from '@/components/Holiday_Calendar';
 import ProfileAnalysis from '@/components/ProfileAnalysis';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import UserCommunity from '@/components/UserCommunity';
 import { client } from '@/sanity/lib/client';
 import { AUTHOR_ID_QUERY, COMMUNITY_BY_AUTHOR_QUERY } from '@/sanity/lib/queries';
-import { AtSign, Info } from 'lucide-react';
+import { AtSign, Calendar, Info } from 'lucide-react';
 import Image from 'next/image';
 import { notFound } from 'next/navigation';
 import { Suspense } from 'react';
@@ -57,6 +58,10 @@ const page = async ({ params }) => {
                                 <AtSign className='flex sm:hidden text-light-400 font-bold' />
                                 <h3 className="text-30-bold-light hidden sm:flex" > Profile Analysis </h3>
                             </TabsTrigger>}
+                            {session?.id === id && <TabsTrigger value="calendar" className="tab rounded-2xl" >
+                                <Calendar className='flex sm:hidden text-light-400 font-bold' />
+                                <h3 className="text-30-bold-light hidden sm:flex" > User Calendar </h3>
+                            </TabsTrigger>}
 
                         </TabsList>
 
@@ -71,6 +76,10 @@ const page = async ({ params }) => {
 
                         <TabsContent value="analysis">
                             <ProfileAnalysis user={user} communities={communities} />
+                        </TabsContent>
+
+                        <TabsContent value="calendar" >
+                            <HolidayCalendar />
                         </TabsContent>
 
                     </Tabs>

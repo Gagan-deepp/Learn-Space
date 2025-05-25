@@ -9,7 +9,7 @@ const CommunityCard = ({ com }) => {
 
     const { _createdAt, count, members, author, _id, description, image, title, category } = com;
     return (
-        <li className="startup-card group" >
+        <li className="startup-card group hover:scale-[0.9] duration-200 transition-all ease-in-out" >
             <div className="flex-between group-hover:text-white-1">
                 <p className="startup_card_date" >
                     {formatDate(_createdAt)}

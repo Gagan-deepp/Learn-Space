@@ -23,27 +23,27 @@ const Navbar = async () => {
                                     redirectTo: "/"
                                 });
                             }}>
-                                <button type="submit" >
+                                <button type="submit" className="hover:scale-[0.9] duration-200 transition-all ease-in-out" >
                                     <span className="max-sm:hidden" > Logout </span>
                                     <LogOut className="size-6 sm:hidden text-red-400" />
                                 </button>
                             </form>
 
-                            <Link href="/community/create">
+                            <Link href="/community/create" className="hover:scale-[0.9] duration-200 transition-all ease-in-out">
                                 <span className="max-sm:hidden" > Create </span>
                                 <BadgePlus className="size-6 sm:hidden" />
                             </Link>
 
-                            <Link href="/community/all">
+                            <Link href="/community/all" className="hover:scale-[0.9] duration-200 transition-all ease-in-out">
                                 <span className="max-sm:hidden" > Communities </span>
                                 <Users className="size-6 sm:hidden" />
                             </Link>
-                            <Link href="/roadmap">
+                            <Link href="/roadmap" className="hover:scale-[0.9] duration-200 transition-all ease-in-out" >
                                 <span className="max-sm:hidden" > Roadmap </span>
                                 <BriefcaseBusiness className="size-6 sm:hidden" />
                             </Link>
 
-                            <Link href={`/user/${session?.id}`} className="flex gap-3 items-center">
+                            <Link href={`/user/${session?.id}`} className="flex gap-3 items-center hover:scale-[0.9] duration-200 transition-all ease-in-out">
                                 <Avatar className="size-10" >
                                     <AvatarImage src={session?.user?.image || ""} alt={session?.user?.name || ""} />
                                     <AvatarFallback> ... </AvatarFallback>
@@ -56,16 +56,16 @@ const Navbar = async () => {
                                 "use server"
                                 await signIn()
                             }} >
-                                <button type="submit">
+                                <button type="submit" className="hover:scale-[0.9] duration-200 transition-all ease-in-out" >
                                     Login
                                 </button>
                             </form>
 
-                            <Link href="/community/all">
+                            <Link href="/community/all" className="hover:scale-[0.9] duration-200 transition-all ease-in-out" >
                                 <span className="max-sm:hidden" > Communities </span>
                                 <Users className="size-6 sm:hidden" />
                             </Link>
-                            <Link href="/roadmap">
+                            <Link href="/roadmap" className="hover:scale-[0.9] duration-200 transition-all ease-in-out" >
                                 <span className="max-sm:hidden" > Roadmap </span>
                                 <BriefcaseBusiness className="size-6 sm:hidden" />
                             </Link>

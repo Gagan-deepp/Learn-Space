@@ -16,7 +16,7 @@ const SearchBar = ({ search }) => {
                 {search && <SearchReset />}
 
                 <button type="submit" className="search-btn text-white" >
-                    <Search className="font-extrabold"/>
+                    <Search className="font-extrabold" />
                 </button>
             </div>
         </Form>

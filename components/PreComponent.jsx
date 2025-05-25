@@ -21,14 +21,14 @@ const PreComponent = ({ coms, famous, search }) => {
             opacity: 1,
             transition: {
                 duration: 1.5,
-                delay: 5,
+                delay: 6,
                 ease: [0.85, 0, 0.15, 1],
             }
         }
     }
     const scaleVar = {
         initial: {
-            scale: 0.5
+            scale: 0.2
         },
         animate: {
             scale: 1,
@@ -48,8 +48,8 @@ const PreComponent = ({ coms, famous, search }) => {
             y: 0,
             opacity: 1,
             transition: {
-                duration: 1.5,
-                delay: 5.7,
+                duration: 1,
+                delay: 6,
                 ease: [0.85, 0, 0.15, 1],
             }
         }
@@ -64,11 +64,9 @@ const PreComponent = ({ coms, famous, search }) => {
             </AnimatePresence>
 
             <div>
-                <section className="grey_container rounded-3xl relative mt-8" >
+                <motion.section variants={scaleVar} initial="initial" animate="animate" className="grey_container rounded-3xl relative mt-8" >
 
-                    <motion.div variants={scaleVar} initial="initial" animate="animate" className="overflow-hidden relative" >
-                        <Image src="/bg1.jpg" alt="background" fill={true} className=" !z-[-1] rounded-3xl opacity-[0.6] object-cover" quality={100} />
-                    </motion.div>
+                    <Image src="/bg1.jpg" alt="background" fill={true} className=" !z-[-1] rounded-3xl opacity-[0.6] object-cover" quality={100} />
 
                     <motion.div variants={opacityVar} initial="initial" animate="animate" className="overflow-hidden relative heading" >
                         <motion.h1 variants={variants} initial="initial" animate="animate"> Grow Together, <br /> Learn Your Way </motion.h1>
@@ -78,11 +76,24 @@ const PreComponent = ({ coms, famous, search }) => {
                         <motion.p variants={variants} initial="initial" animate="animate" > Where Collaboration meets Personalized Learning </motion.p>
                     </motion.div>
                     <div className="overflow-hidden relative" >
-                        <motion.div variants={scaleVar} initial="initial" animate="animate" >
+                        <motion.div
+                            initial={{
+                                opacity: 0,
+                                scale: 0.5
+                            }}
+                            animate={{
+                                scale: 1,
+                                opacity: 1,
+                                transition: {
+                                    duration: 1,
+                                    delay: 6.75,
+                                    ease: [0.85, 0, 0.15, 1],
+                                }
+                            }} >
                             <SearchBar search={search} />
                         </motion.div>
                     </div>
-                </section>
+                </motion.section>
 
                 <section className="section_container" >
                     <div>
